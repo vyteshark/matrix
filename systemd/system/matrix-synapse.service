@@ -1,0 +1,16 @@
+# /etc/systemd/system/matrix-synapse.service
+[Unit]
+Description=Matrix Synapse Server
+After=network.target
+
+[Service]
+Type=simple
+User=synapse
+WorkingDirectory=/var/lib/synapse
+EnvironmentFile=/var/lib/synapse/.env
+ExecStart=/bin/bash -c '/var/lib/synapse/pyenv/bin/python -m synapse.app.homeserver --config-path <(envsubst < /var/lib/synapse/homeserver.yaml)'
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

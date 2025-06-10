@@ -1,0 +1,62 @@
+# /etc/nginx/sites-enabled/default
+
+# this is the nginx configuration!
+# it needs to be edited by you, e.g. replacing domains and paths
+
+# --- redirects, root pages etc.! ---
+server {
+    listen 80;
+    server_name matrix-nextdragon.duckdns.org; # replace this with your domain!
+
+    root /var/www/matrix; # replace this with your path to the folder where your index.html file is stored!
+    index index.html;
+
+    return 301 https://$host$request_uri; # automatically redirect requests from http to https!
+}
+
+# --- SSL cert configuration! ---
+server {
+    listen 443 ssl;
+    server_name matrix-nextdragon.duckdns.org; # this too!..
+
+    ssl_certificate /etc/letsencrypt/live/matrix-nextdragon.duckdns.org/fullchain.pem; # replace this with path to your SSL cert!
+    ssl_certificate_key /etc/letsencrypt/live/matrix-nextdragon.duckdns.org/privkey.pem; # here too!
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+# --- logs! ---
+    access_log /var/log/nginx/matrix-access.log; # can be left like this but you can replace it too!
+    error_log /var/log/nginx/matrix-error.log;
+
+# --- matrix server & client pages for federation to work! ---
+# uncomment this ONLY if you have >4GB RAM
+
+#    location /.well-known/matrix/server {
+#        default_type application/json;
+#        return 200 '{"m.server": "matrix-nextdragon.duckdns.org:443"}'; # replace with your domain here too!
+#    }
+#
+#    location /.well-known/matrix/client {
+#        default_type application/json;
+#        return 200 '{"m.homeserver": {"base_url": "https://matrix-nextdragon.duckdns.org"}}'; # and here!
+#    }
+
+# --- proxy again! ---
+    location / {
+        root /var/www/matrix;
+        index index.html;
+        try_files $uri $uri/ @proxy_to_synapse;
+    }
+
+    location @proxy_to_synapse {
+        proxy_pass http://127.0.0.1:8008;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 600s;
+        proxy_send_timeout 600s;
+    }
+}
