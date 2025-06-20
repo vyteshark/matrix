@@ -56,10 +56,10 @@ database:
 
 # --- misc! ---
 enable_registration: true # enable registrations! if disabled, you will only be able to register new users via CLI!
-enable_registration_without_verification: true # yuh i think we don't need comments here xD
+enable_registration_without_verification: true # enable registrations without CAPTCHA / email! can lead to spam bots, but dw if you're not going to make your server large and public
 enable_room_list_search: true # enable room list search! (thanks sherlock)
 restrict_public_rooms_to_local_users: false
-suppress_key_server_warning: true # key server warning is an annoying asshole! ;D
+suppress_key_server_warning: true # key server warning is an annoying asshole! ;D /hj
 
 # --- logging and media storing! ---
 log_config: "${SYNAPSE_LOGFILE}" # path to server log config file!
@@ -90,7 +90,7 @@ turn_shared_secret: "${SYNAPSE_TURN_SHARED_SECRET}"
 turn_user_lifetime: 1h
 turn_allow_guests: true
 
-# --- concurrency settings (uncomment ONLY if you have a powerfull ass CPU!!!) ---
+# --- concurrency settings (uncomment ONLY if you have a powerful ass CPU!!!) ---
 # event_cache_size: 500M
 # state_cache_size: 200M
 # presence_cache_size: 10000
