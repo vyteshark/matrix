@@ -1,4 +1,5 @@
 # /etc/systemd/system/matrix-synapse.service
+
 [Unit]
 Description=Matrix Synapse Server
 After=network.target
@@ -8,6 +9,10 @@ Type=simple
 User=synapse
 WorkingDirectory=/var/lib/synapse
 EnvironmentFile=/var/lib/synapse/.env
+# a quick breakdown of what is happening below:
+# 1. with bash, execute synapse through python virtual environment and set configuration file path to /var/lib/synapse/homeserver.yaml
+# 2. export variables from .env and insert the actual data into the config file
+# the last thing requires gettext to be installed!
 ExecStart=/bin/bash -c '/var/lib/synapse/pyenv/bin/python -m synapse.app.homeserver --config-path <(envsubst < /var/lib/synapse/homeserver.yaml)'
 Restart=on-failure
 LimitNOFILE=65536

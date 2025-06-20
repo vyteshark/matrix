@@ -23,7 +23,7 @@
 # you'll HAVE to edit it in some way, since no servers are the same! i left some hints right in the configuration, so i think you'll figure everything out ;)
 # but, if you didn't, feel free to contact me for help! (links: https://nextdragon.is-a.dev)
 #
-# enjoy! :D
+# happy debugging! :D /hj
 
 server_name: ${SYNAPSE_SRVNAME} # your server name! must be a domain or ip (domain HIGHLY recommended! you can get your own for free on duckdns.org) !! if errors occur because of this, replace with a plain string
 pid_file: "${SYNAPSE_PID_FILE}" # your PID file! usually named homeserver.pid and stored in your synapse user's homedir!
@@ -37,11 +37,12 @@ listeners:
     x_forwarded: true
     bind_addresses: ['::1', '127.0.0.1']
     resources:
-      - names: [client, federation]
+      - names: [client, federation] # delete "federation" from here if you're not planning on using it! (i explained what it is in README.md)
         compress: false
 
 # --- database configuration! ---
-# i use PostgreSQL, as i already said in README.md!
+# i use PostgreSQL and i recommend to use it too! (or don't, i'm not your mom :D
+# but if you don't, the db configuration will look completely different)
 database:
   name: psycopg2
   args:
@@ -49,25 +50,30 @@ database:
     password: "${SYNAPSE_DB_PASSWORD}" # must be the same as "synapse" user's pass in psql!
     database: synapse
     host: localhost
-    # database connection pool limits! if you got a potato server (like i did earlier...), set this to cp_min: 5 and cp_min: 10!
+    # database connection pool limits! if you got a potato server (like i did earlier...), set this to cp_min: 5 and cp_max: 10!
     cp_min: 20
     cp_max: 100
 
 # --- misc! ---
-enable_registration: true # enable registrations!
-enable_registration_without_verification: true # enable registrations without CAPTCHA!
-enable_room_list_search: true # enable room list search! (thanks sherlock x2)
+enable_registration: true # enable registrations! if disabled, you will only be able to register new users via CLI!
+enable_registration_without_verification: true # yuh i think we don't need comments here xD
+enable_room_list_search: true # enable room list search! (thanks sherlock)
 restrict_public_rooms_to_local_users: false
-suppress_key_server_warning: true
+suppress_key_server_warning: true # key server warning is an annoying asshole! ;D
 
 # --- logging and media storing! ---
 log_config: "${SYNAPSE_LOGFILE}" # path to server log config file!
 media_store_path: "${SYNAPSE_MEDIA_DIR}" # path to media storing folder!
-max_upload_size: "50M"  # max upload size (wow, thanks, sherlock...)! if you have <150GB drive, set to 20mb or less!
+max_upload_size: "50M"  # max upload size (wow, thanks, sherlock x2)! if you have <150GB drive, set to 20mb or less!
 media_retention:
-  local_media_lifetime: 60d    # delete all media after ...!
+  local_media_lifetime: 60d    # delete all media after ...! used to free up disk space, if you want to keep the files forever delete this line!
 
 # --- security and keys! ---
+# do NOT replace ANYTHING in here with plain strings expect for signing key path, use .env!
+# also please make sure to make a STRONG key, it's not a regular password! it should look like this:
+# xT2$kL9!pY7@wE5&vR8*zQ3%mN6^bV4
+# or...
+# bN7#mK1!pL3$vC9&xZ5*zQ2%wE4^hF8
 registration_shared_secret: "${SYNAPSE_REG_SHARED_SECRET}"
 report_stats: true
 macaroon_secret_key: "${SYNAPSE_MACAROON_SECRET_KEY}"
@@ -76,24 +82,18 @@ signing_key_path: "${SYNAPSE_SIGNING_KEY}"
 trusted_key_servers:
   - server_name: "matrix.org"
 
-# --- TURN/STUN configuration (for VoIP/video calls)!
+# --- TURN configuration (for VoIP/video calls)!
 turn_uris:
-  - "turn:${SYNAPSE_SRVNAME}?transport=udp"
-  - "turn:${SYNAPSE_SRVNAME}?transport=tcp"
+  - "turn:${SYNAPSE_SRVNAME}?transport=udp" # if errors occur, replace with - "turn:yourdomain.com?transport=udp"!
+  - "turn:${SYNAPSE_SRVNAME}?transport=tcp" # if errors occur, replace with - "turn:yourdomain.com?transport=tcp"!
 turn_shared_secret: "${SYNAPSE_TURN_SHARED_SECRET}"
 turn_user_lifetime: 1h
 turn_allow_guests: true
 
-# --- concurrency and worker specific settings (uncomment ONLY if you have a powerfull ass CPU!!!) ---
-# the `worker_main_http_uri` and `worker_listeners` are typically set when
-# you configure a worker setup. For a single process, they aren't needed here.
-# if you plan to implement workers,
-# these settings (and more) will go into the worker config files.
-event_cache_size: 500M
-state_cache_size: 200M
-presence_cache_size: 10000
-receipt_cache_size: 10000
-# worker_main_http_uri: "http://localhost:8008"
-# worker_listeners: []
+# --- concurrency settings (uncomment ONLY if you have a powerfull ass CPU!!!) ---
+# event_cache_size: 500M
+# state_cache_size: 200M
+# presence_cache_size: 10000
+# receipt_cache_size: 10000
 
 # vim:ft=yaml
