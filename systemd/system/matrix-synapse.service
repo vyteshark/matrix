@@ -1,5 +1,21 @@
 # /etc/systemd/system/matrix-synapse.service
 
+# --- code by: @nexxtdragon on github ---
+# --- contacts: https://nextdragon.is-a.dev/ ---
+#  ,-.       _,---._ __  / \
+# /  )    .-'       `./ /   \
+# (  (   ,'            `/    /|
+# \  `-"             \'\   / |
+#  `.              ,  \ \ /  |
+#   /`.          ,'-`----Y   |
+#  (            ;        |   '
+#  |  ,-.    ,-'         |  /
+#  |  | (   |            | /
+#  )  |  \  `.___________|/
+#  `--'   `--'
+# --- made with: <3 ---
+# --- allowed to fork, reuse and modificate with credits ---
+
 [Unit]
 Description=Matrix Synapse Server
 After=network.target

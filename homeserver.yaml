@@ -1,6 +1,21 @@
 # /var/lib/synapse/homeserver.yaml
 
-# this is my configuration for Matrix Synapse server
+# --- code by: @nexxtdragon on github ---
+# --- contacts: https://nextdragon.is-a.dev/ ---
+#  ,-.       _,---._ __  / \
+# /  )    .-'       `./ /   \
+# (  (   ,'            `/    /|
+# \  `-"             \'\   / |
+#  `.              ,  \ \ /  |
+#   /`.          ,'-`----Y   |
+#  (            ;        |   '
+#  |  ,-.    ,-'         |  /
+#  |  | (   |            | /
+#  )  |  \  `.___________|/
+#  `--'   `--'
+# --- made with: <3 ---
+# --- allowed to fork, reuse and modificate with credits ---
+
 # before you put this as your actual config, create the .env file with all of variables listed below:
 # SYNAPSE_DB_PASSWORD="123"
 # SYNAPSE_REG_SHARED_SECRET="123"
