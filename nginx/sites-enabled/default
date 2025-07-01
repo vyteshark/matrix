@@ -59,7 +59,7 @@ server {
 #        return 200 '{"m.homeserver": {"base_url": "https://matrix-nextdragon.duckdns.org"}}'; # and here!
 #    }
 
-# --- proxy again! ---
+# --- proxy and pages locations! ---
     location / {
         root /var/www/matrix;
         index index.html;
