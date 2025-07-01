@@ -261,6 +261,6 @@ Make admin [no]: yes    # if you want it to be an administrator!
 <br> <br>
 
 <div align="center">
-<small>built for debian by nextdragon with <3 and ~4 hours of work</small> <br>
+<small>built for debian by nightfox with <3 and ~4 hours of work</small> <br>
 <small>you can join <a href="https://matrix-nextdragon.duckdns.org/">mine</a> server btw!</small>
 </div>
