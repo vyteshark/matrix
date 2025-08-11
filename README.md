@@ -113,7 +113,7 @@ PYTHONUNBUFFERED=1
 
 2.3  edit homeserver.yaml:
 - i left a lot of hints inside of it to make sure you'll figure everything out!
-- if something is wrong in there or you don't understand something, feel free to [contact me](https://nextdragon.is-a.dev) ;D
+- if something is wrong in there or you don't understand something, feel free to [contact me](https://nightfox.neocities.org) ;D
 
 ## nginx + https configuration
 
@@ -138,7 +138,7 @@ sudo systemctl enable nginx
 sudo systemctl status nginx
 ```
 - if it works, continue configuring everything else in there!
-- if not, try searching for the answer first, but if you still can't figure something out, read troubleshooting.md (currently WIP) or [contact me](https://nextdragon.is-a.dev)! :)
+- if not, try searching for the answer first, but if you still can't figure something out, read troubleshooting.md (currently WIP) or [contact me](https://nightfox.neocities.org)! :)
 
 3. place something into ```/var/www/matrix/index.html```. it can be anything - an actual website, a stub, a... \<h1>hello world\</h1>?..
 
@@ -262,5 +262,5 @@ Make admin [no]: yes    # if you want it to be an administrator!
 
 <div align="center">
 <small>built for debian by nightfox with <3 and ~4 hours of work</small> <br>
-<small>you can join <a href="https://matrix-nextdragon.duckdns.org/">mine</a> server btw!</small>
+<small>you can join <a href="https://matrix-nextdragon.duckdns.org/">mine</a> server btw! (do not register rn!! i'm currently moving to another server so it will be down soon)</small>
 </div>
