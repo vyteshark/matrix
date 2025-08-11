@@ -19,7 +19,7 @@ what i used:
 - distro: Debian 12 (bookworm)
 - CPU: AMD Ryzen 9 3900 (10) @ 3.099GHz 
 - RAM: 24GB
-- SSD NVMe: 450GB
+- SSD NVMe: 230GB
 ---
 what you'll need (at least):
 - 512MB/2GB RAM\* (depends on your distro! if you have <4GB, do **not** use heavy distros like Ubuntu. use lightweight ones, like Debian.)
@@ -90,7 +90,7 @@ python -m synapse.app.homeserver
 2. edit the config:
 - clone my config from this repo: 
 ```bash
-git clone https://github.com/nexxtdragon/matrix.git
+git clone https://codeberg.org/nightlyfoxx/matrix.git
 cp /var/lib/synapse/matrix/homeserver.yaml /var/lib/synapse
 ```
 
