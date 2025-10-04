@@ -262,5 +262,5 @@ Make admin [no]: yes    # if you want it to be an administrator!
 
 <div align="center">
 <small>built for debian by nightfox with <3 and ~4 hours of work</small> <br>
-<small>you can join <a href="https://matrix-nextdragon.duckdns.org/">mine</a> server btw! (do not register rn!! i'm currently moving to another server so it will be down soon)</small>
+<small>you can join <a href="https://wehavecookies-matrix.duckdns.org/">mine</a> server btw! (um yeah i moved to another server recently and now i plan to move to another domain, still don't register there xD)</small>
 </div>
