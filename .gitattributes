@@ -2,4 +2,3 @@
 *.conf linguist-detectable=true
 *.service linguist-detectable=true
 nginx/** linguist-detectable=true
-systemd/** linguist-detectable=true
