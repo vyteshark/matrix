@@ -261,6 +261,6 @@ Make admin [no]: yes    # if you want it to be an administrator!
 <br> <br>
 
 <div align="center">
-<small>built for debian by nightfox with <3 and ~4 hours of work</small> <br>
-<small>you can join <a href="https://wehavecookies-matrix.duckdns.org/">mine</a> server btw! (um yeah i moved to another server recently and now i plan to move to another domain, still don't register there xD)</small>
+<small>built for debian by vshark with <3 and ~4 hours of work</small> <br>
+<small>you can join <a href="https://m.vshark.xyz">my</a> server btw! use m.vshark.xyz in homeserver URL field</small>
 </div>
