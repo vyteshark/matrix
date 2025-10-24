@@ -256,7 +256,7 @@ Make admin [no]: yes    # if you want it to be an administrator!
 **to create a user with admin perms, you'll have to register it through CLI!** <br>
 **regular users can register through an app like element or nheko, if you enabled registrations in the config! (enabled by default in the one you cloned earlier)**
 
-### i guess that's it! have a good day twin ;))
+### i guess that's it! have a good day ;))
 
 <br> <br>
 
